@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <!-- To do list input form -->
+    <div class="container my-4">
+      <form action="/update/{{todo.srno}}" method="POST">
+
+      
+        <h2 class="text-center">Update Todo</h2>
+
+
+        
+            <div class="mb-3">
+              <label for="input" class="form-label">Title</label>
+              <input type="text" class="form-control" value="{{todo.title}}" name="title" id="title">
+             
+            </div>
+            <div class="mb-3">
+              <label for="input" class="form-label">Description</label>
+              <input class="form-control" value="{{todo.desc}}" name="desc" id="desc"></input>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="add">Update</button>
+            <!-- <button type="submit" class="btn btn-primary"  onclick="clearStorage()">Clear the List</button> -->
+          
+          </form>
+      </div>
+
+ 
+   
+      {% endblock body %}
+
+
+
+    

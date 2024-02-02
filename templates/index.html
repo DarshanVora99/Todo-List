@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <!-- To do list input form -->
+    <div class="container my-4">
+      <form action="/" method="POST">
+
+      
+        <h2 class="text-center">TODOs List</h2>
+
+
+        
+            <div class="mb-3">
+              <label for="input" class="form-label">Title</label>
+              <input type="text" class="form-control" name="title" id="title">
+              <div id="emailHelp" class="form-text">Add item to list </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Description</label>
+              <input class="form-control" name="desc" id="desc"></input>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="add">Add to List</button>
+            <!-- <button type="submit" class="btn btn-primary"  onclick="clearStorage()">Clear the List</button> -->
+          
+          </form>
+      </div>
+
+    <!-- Bootstrap table -->
+    <!-- Displaying your TODOs List  -->
+    <div class="container my-4">
+        
+
+        
+        <table class="table table-striped">
+           
+              {% if allTodos|length==0 %}
+              <div class="alert alert-primary" role="alert">
+                No Todos found. Add your first todo now.
+              </div>
+               
+              {% else %}
+
+              <h2>Your Items</h2>
+              <thead>
+                <tr>
+                  <th scope="col">SrNo</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>                             
+                </tr>
+              </thead>
+  
+              <tbody id="tableBody">
+                
+              {% for Todo in allTodos %}
+              <tr>
+                <th scope="row">{{loop.index}}</th> 
+                <td>{{Todo.title}}</td>
+                <td>{{Todo.desc}}</td>
+                <td class="delete_btn" style="width: 2vw;"> <a href="/delete/{{Todo.srno}}"><button type="button" class="btn btn-outline-primary btn-sm mx-2">Delete</button></a>  </td>
+                <td class="update_btn"> <a href="/update/{{Todo.srno}}"><button type="button" class="btn btn-outline-primary btn-sm">Update</button></a></td>
+              
+              </tr>
+              {% endfor %}
+
+
+
+              {% endif %}
+              
+                        
+            </tbody>
+          </table>
+      </div>
+   
+      {% endblock body %}
+
+
+
+    
