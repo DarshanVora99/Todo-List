@@ -70,3 +70,6 @@ def hello_world():
 #     with app.app_context():
 #         db.create_all()
 #         app.run(debug=True)
+
+
+# git push -u origin main
